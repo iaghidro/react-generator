@@ -1,0 +1,22 @@
+{
+  "name": "<%= moduleName %>",
+  "version": "1.0.0",
+  "description": "<%= description %>",
+  "main": "index.js",
+  "scripts": {
+    "ci-test": "mocha --recursive -R tap tests/ > test.tap",
+    "test": "mocha --recursive tests/"
+  },
+  "author": "Yeoman",
+  "license": "ISC",
+  "jshintConfig": {
+    "node": true,
+    "esnext": true,
+    "mocha": true
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "chai": "^3.4.1",
+    "should": "^7.1.1"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "name": "<%= moduleName %>",
+  "version": "1.0.0",
+  "description": "<%= description %>",
+  "main": "index.js",
+  "scripts": {
+    "ci-test": "mocha --recursive -R tap tests/ > test.tap",
+    "test": "mocha --recursive tests/",
+    "prepublish": "gulp build"
+  },  
+  "keywords": [
+    "angular",
+    "services"
+  ],
+  "author": "Yeoman",
+  "license": "ISC",  
+  "devDependencies": {
+    "babel-preset-es2015": "^6.1.18",
+    "chai": "^3.4.1",
+    "gulp": "^3.9.0",
+    "gulp-babel": "^6.1.0",
+    "should": "^7.1.1"
+  },
+  "jshintConfig": {
+    "node": true,
+    "esnext": true
+  },
+  "dependencies": {
+    "extend": "^3.0.0",
+    "gulp-jade": "^1.1.0",
+    "gulp-ng-template-strings": "0.0.4",
+    "gulp-sass": "^2.1.0",
+    "run-sequence": "^1.1.5"
+  }
+}
