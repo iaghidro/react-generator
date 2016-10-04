@@ -11,8 +11,7 @@ Before installation, check...
 
 ### Usage
 
-1. Navigate to the folder in which you wish to generate the file(s)/ module.
-        a. If it's a module, he folder name should match the name you will give the module. (ie: rlAutocomplete)
+1. Navigate to the folder in which you wish to generate the file(s)
 2. From the terminal run: `yo rlgen $(pwd)` or `yo rlgen path/to/directory/from/step/1`
 
 ### Options
