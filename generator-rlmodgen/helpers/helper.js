@@ -1,5 +1,6 @@
 'use strict';
 var R = require('ramda');
+var asciiArt = require('./asciiArt');
 
 var createModuleName = function createModuleName(name, path) {
   var finalName = '@rocketloans';
@@ -33,15 +34,15 @@ var copyPackageJson = function copyPackageJson(generator) {
   );
 };
 
+
 var printFarewell = function printFarewell(generator) {
-  generator.log('All done. Have a great day. Come back and see me soon ; )');
-}
+  generator.log(asciiArt.farewell + asciiArt.pusheenCat);
+};
 
 module.exports = {
   createModuleName: createModuleName,
   moduleNameMatchesDirectory: moduleNameMatchesDirectory,
   renameDirectoryToMatchModuleName: renameDirectoryToMatchModuleName,
   copyPackageJson: copyPackageJson,
-  printVersionerStub: printVersionerStub,
   printFarewell: printFarewell
 };

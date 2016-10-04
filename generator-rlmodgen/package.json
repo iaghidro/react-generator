@@ -1,7 +1,7 @@
 {
-  "name": "generator-rlmodgen",
+  "name": "file-generator",
   "version": "1.0.17",
-  "description": "This tool eases the burden during the creation of RocketLoans modules for the ui-sdk",
+  "description": "This tool eases the burden during the creation of RocketLoans modules and files for",
   "files": [
     "generators/app",
     "generators/router",

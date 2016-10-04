@@ -3,13 +3,14 @@
   'use strict';
 
   angular
-    .module('<%= moduleName %>')
-    .controller('<%= moduleName %>Controller', <%= moduleName %>Controller)
+    .module('<%= fileName %>')
+    .controller('<%= fileName %>Controller', <%= fileName %>Controller)
 
-  <%= moduleName %>Controller.$inject = [];
-  function <%= moduleName %>Controller () {
+  <%= fileName %>Controller.$inject = [];
+  
+  function <%= fileName %>Controller () {
     var vm = this;
     // Code goes here :)
   }
 
-})()
+})();

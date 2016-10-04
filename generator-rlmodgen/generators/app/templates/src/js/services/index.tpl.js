@@ -3,19 +3,20 @@
   'use strict';
 
   angular
-    .module('<%= moduleName %>')
-    .factory('<%= moduleName %>Factory', <%= moduleName %>Factory)
+    .module('<%= fileName %>')
+    .factory('<%= fileName %>Factory', <%= fileName %>Factory)
 
 
-  <%= moduleName %>Factory.$inject = [];
-  function <%= moduleName %>Factory () {
-    class <%= moduleName %>Class {
+  <%= fileName %>Factory.$inject = [];
+  
+  function <%= fileName %>Factory () {
+    class <%= fileName %>Class {
       method() {
 
       }
     }
 
-    return new <%= moduleName %>Class();
+    return new <%= fileName %>Class();
   }
 
 })()
