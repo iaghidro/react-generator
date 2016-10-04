@@ -1,0 +1,10 @@
+*.swp
+node_modules/
+npm-debug.log
+test-report.xml
+.DS_Store
+2
+/2
+/nbproject/
+doc/
+*.idea
