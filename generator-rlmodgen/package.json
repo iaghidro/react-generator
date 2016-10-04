@@ -1,5 +1,5 @@
 {
-  "name": "file-generator",
+  "name": "generator-rlmodgen",
   "version": "1.0.17",
   "description": "This tool eases the burden during the creation of RocketLoans modules and files for",
   "files": [
