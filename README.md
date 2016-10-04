@@ -1,4 +1,4 @@
-## Welcome to RLGen (Rocket Loans Module Generator)
+## Welcome to RLGen (Rocket Loans Generator)
 
 ### Dependencies
 Before installation, check...
