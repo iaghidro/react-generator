@@ -1,4 +1,6 @@
 
+// <%= description %>
+
 (function (){
   'use strict';
 
@@ -9,8 +11,13 @@
   <%= fileName %>Controller.$inject = [];
   
   function <%= fileName %>Controller () {
-    var vm = this;
-    // Code goes here :)
+      
+    var self = this;
+    
+    self.init = function() {
+        
+    };
+    
   }
 
 })();

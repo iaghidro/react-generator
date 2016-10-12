@@ -1,6 +1,6 @@
 /**
  * @apiName <%= fileName %>
- * @api {get} v1/<%= fileName %> Description goes here
+ * @api {get} v1/<%= fileName %>
  *
  *
  * @apiSuccess {Object} Object Value returned on success

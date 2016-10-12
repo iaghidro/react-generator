@@ -34,65 +34,101 @@ module.exports = generators.Base.extend({
         type    : 'list',
         name    : 'type',
         message : 'What type of file are you building',
-        choices: ['RPC', 'Node_Controller', "JS_Class", "Angular_Controller", "Angular_Service"],
-        default : 'Angular_Controller'
+        choices: ['Node_12', 'Angular_1'],
+        default : 'Node_12'
       }, function (answers) {
         this.type = answers.type;
         done();
       }.bind(this));
     },
-    description: function () {
+    node12Subtype: function () {
       var done = this.async();
       this.prompt({
-        type    : 'input',
-        name    : 'description',
-        message : 'Please provide a description for the module',
-        default : ''
+        type    : 'list',
+        name    : 'node12Subtype',
+        message : 'What type of file are you building',
+        choices: ['RPC', 'API_Controller', 'Core_SDK_Test', 'JS_Class'],
+        when    : this.type == 'Node_12',
+        default : 'RPC'
       }, function (answers) {
-        this.description = answers.description;
+        this.node12Subtype = answers.node12Subtype;
         done();
       }.bind(this));
-    }
+    },
+    angular1SubType: function () {
+      var done = this.async();
+      this.prompt({
+        type    : 'list',
+        name    : 'angular1SubType',
+        message : 'What type of file are you building',
+        choices: ["Controller", "Service"],
+        when    : this.type == 'Angular_1',
+        default : 'Angular_Controller'
+      }, function (answers) {
+        this.angular1SubType = answers.angular1SubType;
+        done();
+      }.bind(this));
+    },
+//    description: function () {
+//      var done = this.async();
+//      this.prompt({
+//        type    : 'input',
+//        name    : 'description',
+//        message : 'Please provide a description for the file',
+//        default : '',
+//      }, function (answers) {
+//        this.description = answers.description;
+//        done();
+//      }.bind(this));
+//    }
   },
   writing: function() {
       
-    // build Angular_Controller file
-    if (this.type === 'Angular_Controller') {
-      this.fs.copyTpl(
-        this.templatePath('src/js/controllers/index.tpl.js'),
-        this.destinationPath(`${this.fileNameLowerCase}-controller.js`), {
-          fileName: this.fileName
+    if (this.type === 'Angular_1') {
+        
+        if (this.angular1SubType === 'Controller') {
+          this.fs.copyTpl(
+            this.templatePath('src/js/angular/controllers/index.tpl.js'),
+            this.destinationPath(`${this.fileName}-controller.js`), {
+              fileName: this.fileName,
+//              description: this.description
+            }
+          );
         }
-      );
+
+        if (this.angular1SubType === 'Service') {
+          this.fs.copyTpl(
+            this.templatePath('src/js/angular/services/index.tpl.js'),
+            this.destinationPath(`${this.fileName}-service.js`), {
+              fileName: this.fileName,
+//              description: this.description
+            }
+          );
+        }
     }
     
-    // build Angular_Service file
-    if (this.type === 'Angular_Service') {
-      this.fs.copyTpl(
-        this.templatePath('src/js/services/index.tpl.js'),
-        this.destinationPath(`${this.fileNameLowerCase}-service.js`), {
-          fileName: this.fileName
+    if (this.type === 'Node_12') {
+        
+        if (this.node12Subtype === 'API_Controller') {
+          this.fs.copyTpl(
+            this.templatePath('src/js/node/controllers/index.tpl.js'),
+            this.destinationPath(`${this.fileName}.js`), {
+              fileName: this.fileName,
+//              description: this.description
+            }
+          );
         }
-      );
+
+        if (this.node12Subtype === 'Core_SDK_Test') {
+          this.fs.copyTpl(
+            this.templatePath('src/js/node/testSuite/index.tpl.js'),
+            this.destinationPath(`${this.fileName}Test.js`), {
+              fileName: this.fileName
+            }
+          );
+        }
     }
     
-    // build a node controller
-    if (this.type === 'Node_Controller') {
-      this.fs.copyTpl(
-        this.templatePath('src/js/node/controllers/index.tpl.js'),
-        this.destinationPath(`${this.fileNameLowerCase}.js`), {
-          fileName: this.fileName
-        }
-      );
-    }
-   
-    //copy tests into place
-    this.fs.copyTpl(
-      this.templatePath('tests'),
-      this.destinationPath('tests'), {
-        fileName: this.fileName
-  }
-    );
   },
   end: function(){
     helper.printFarewell(this);

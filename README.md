@@ -14,8 +14,17 @@ Before installation, check...
 1. Navigate to the folder in which you wish to generate the file(s)
 2. From the terminal run: `yo rlgen $(pwd)` or `yo rlgen path/to/directory/from/step/1`
 
-### Options
+### Menu
 
-1. You can name the module
-2. You can build a ui or node type module
-3. If it's a ui module, you can add a directive and service as well.
+1. TECHNOLOGY: 
+    1. Node_12
+        SUB TYPE: 
+            1. RPC
+            2. API_Controller
+            3. Core_SDK_Test
+            4. JS_Class
+    1. Angular_1
+        SUB TYPE: 
+            1. Controller
+            2. Service
+
