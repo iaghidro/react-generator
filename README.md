@@ -21,14 +21,20 @@ Before installation, check...
     1. Node_12
 
         SUB TYPE:
+
             1. RPC
+
             2. API_Controller
+
             3. Core_SDK_Test
+
             4. JS_Class
 
     1. Angular_1
 
         SUB TYPE: 
+
             1. Controller
+
             2. Service
 
