@@ -18,9 +18,7 @@ Before installation, check...
 
 1. TECHNOLOGY: 
 
-    1. Node_12
-
-        SUB TYPE:
+    1. Node_ES5
 
             1. RPC
 
@@ -30,9 +28,7 @@ Before installation, check...
 
             4. JS_Class
 
-    1. Angular_1
-
-        SUB TYPE: 
+    1. Angular_ES5 
 
             1. Controller
 

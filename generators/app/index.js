@@ -34,38 +34,38 @@ module.exports = generators.Base.extend({
         type    : 'list',
         name    : 'type',
         message : 'What type of file are you building',
-        choices: ['Node_12', 'Angular_1'],
-        default : 'Node_12'
+        choices: ['Node_ES5', 'Angular_ES5'],
+        default : 'Node_ES5'
       }, function (answers) {
         this.type = answers.type;
         done();
       }.bind(this));
     },
-    node12Subtype: function () {
+    nodeES5Subtype: function () {
       var done = this.async();
       this.prompt({
         type    : 'list',
-        name    : 'node12Subtype',
+        name    : 'nodeES5Subtype',
         message : 'What type of file are you building',
         choices: ['RPC', 'API_Controller', 'Core_SDK_Test', 'JS_Class'],
-        when    : this.type == 'Node_12',
+        when    : this.type == 'Node_ES5',
         default : 'RPC'
       }, function (answers) {
-        this.node12Subtype = answers.node12Subtype;
+        this.nodeES5Subtype = answers.nodeES5Subtype;
         done();
       }.bind(this));
     },
-    angular1SubType: function () {
+    angularES5SubType: function () {
       var done = this.async();
       this.prompt({
         type    : 'list',
-        name    : 'angular1SubType',
+        name    : 'angularES5SubType',
         message : 'What type of file are you building',
         choices: ["Controller", "Service"],
-        when    : this.type == 'Angular_1',
+        when    : this.type == 'Angular_ES5',
         default : 'Angular_Controller'
       }, function (answers) {
-        this.angular1SubType = answers.angular1SubType;
+        this.angularES5SubType = answers.angularES5SubType;
         done();
       }.bind(this));
     },
@@ -84,11 +84,11 @@ module.exports = generators.Base.extend({
   },
   writing: function() {
       
-    if (this.type === 'Angular_1') {
+    if (this.type === 'Angular_ES5') {
         
-        if (this.angular1SubType === 'Controller') {
+        if (this.angularES5SubType === 'Controller') {
           this.fs.copyTpl(
-            this.templatePath('src/js/angular/controllers/index.tpl.js'),
+            this.templatePath('src/js/angular/es5/controllers/index.tpl.js'),
             this.destinationPath(`${this.fileName}-controller.js`), {
               fileName: this.fileName,
 //              description: this.description
@@ -96,9 +96,9 @@ module.exports = generators.Base.extend({
           );
         }
 
-        if (this.angular1SubType === 'Service') {
+        if (this.angularES5SubType === 'Service') {
           this.fs.copyTpl(
-            this.templatePath('src/js/angular/services/index.tpl.js'),
+            this.templatePath('src/js/angular/es5/services/index.tpl.js'),
             this.destinationPath(`${this.fileName}-service.js`), {
               fileName: this.fileName,
 //              description: this.description
@@ -107,11 +107,11 @@ module.exports = generators.Base.extend({
         }
     }
     
-    if (this.type === 'Node_12') {
+    if (this.type === 'Node_ES5') {
         
-        if (this.node12Subtype === 'API_Controller') {
+        if (this.nodeES5Subtype === 'API_Controller') {
           this.fs.copyTpl(
-            this.templatePath('src/js/node/controllers/index.tpl.js'),
+            this.templatePath('src/js/node/es5/controllers/index.tpl.js'),
             this.destinationPath(`${this.fileName}.js`), {
               fileName: this.fileName,
 //              description: this.description
@@ -119,9 +119,9 @@ module.exports = generators.Base.extend({
           );
         }
 
-        if (this.node12Subtype === 'Core_SDK_Test') {
+        if (this.nodeES5Subtype === 'Core_SDK_Test') {
           this.fs.copyTpl(
-            this.templatePath('src/js/node/testSuite/index.tpl.js'),
+            this.templatePath('src/js/node/es5/testSuite/index.tpl.js'),
             this.destinationPath(`${this.fileName}Test.js`), {
               fileName: this.fileName
             }

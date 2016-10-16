@@ -1,12 +1,9 @@
-
-// <%= description %>
-
 (function (){
   'use strict';
 
   angular
     .module('<%= fileName %>')
-    .controller('<%= fileName %>Controller', <%= fileName %>Controller)
+    .controller('<%= fileName %>Controller', <%= fileName %>Controller);
 
   <%= fileName %>Controller.$inject = [];
   
