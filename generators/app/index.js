@@ -109,6 +109,15 @@ module.exports = generators.Base.extend({
     
     if (this.type === 'Node_ES5') {
         
+        if (this.nodeES5Subtype === 'RPC') {
+          this.fs.copyTpl(
+            this.templatePath('src/js/node/es5/rpc/index.tpl.js'),
+            this.destinationPath(`index.js`), {
+              fileName: this.fileName
+            }
+          );
+        }
+        
         if (this.nodeES5Subtype === 'API_Controller') {
           this.fs.copyTpl(
             this.templatePath('src/js/node/es5/controllers/index.tpl.js'),
@@ -123,6 +132,15 @@ module.exports = generators.Base.extend({
           this.fs.copyTpl(
             this.templatePath('src/js/node/es5/testSuite/index.tpl.js'),
             this.destinationPath(`${this.fileName}Test.js`), {
+              fileName: this.fileName
+            }
+          );
+        }
+
+        if (this.nodeES5Subtype === 'JS_Class') {
+          this.fs.copyTpl(
+            this.templatePath('src/js/node/es5/js-class/index.tpl.js'),
+            this.destinationPath(`${this.fileName}.js`), {
               fileName: this.fileName
             }
           );
