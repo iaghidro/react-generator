@@ -1,10 +1,12 @@
 var generators = require('yeoman-generator');
 var R = require('ramda');
-var helper = require('../../helpers').common;
-var asciiArt = require('../../helpers/asciiArt');
 var chalk = require('chalk');
 var yosay = require('yosay');
 var fs = require('fs');
+
+var helper = require('../../helpers').common;
+var schemaHelper = require('../../helpers').schemaHelper;
+var asciiArt = require('../../helpers/asciiArt');
 
 module.exports = generators.Base.extend({
   constructor: function() {
@@ -20,21 +22,21 @@ module.exports = generators.Base.extend({
       this.prompt({
         type    : 'input',
         name    : 'name',
-        message : 'Your file name',
+        message : 'Your file name (kebab-case)',
         default : 'file_name'
       }, function (answers) {
         this.fileName = answers.name;
         this.fileNameLowerCase = answers.name.toLowerCase();
         done();
       }.bind(this));
-    }, 
+    },
     type: function () {
       var done = this.async();
       this.prompt({
         type    : 'list',
         name    : 'type',
         message : 'What type of file are you building',
-        choices: ['Node_ES5', 'Angular_ES5'],
+        choices: ['Node_ES5', 'Angular_ES5', 'Component'],
         default : 'Node_ES5'
       }, function (answers) {
         this.type = answers.type;
@@ -69,6 +71,30 @@ module.exports = generators.Base.extend({
         done();
       }.bind(this));
     },
+    schema: function () {
+        var done = this.async();
+        this.prompt({
+            type    : 'input',
+            name    : 'schema',
+            message : 'Paste your JSON schema',
+            when: this.type === 'Component'
+        }, function (answers) {
+            this.schemaData = schemaHelper.parse(answers.schema);
+            done();
+        }.bind(this));
+    },
+    className: function () {
+      var done = this.async();
+      this.prompt({
+          type    : 'input',
+          name    : 'className',
+          message : 'What is your Block (BEM) name?',
+          when: this.type === 'Component'
+      }, function (answers) {
+          this.className = answers.className;
+          done();
+      }.bind(this));
+    },
 //    description: function () {
 //      var done = this.async();
 //      this.prompt({
@@ -83,9 +109,9 @@ module.exports = generators.Base.extend({
 //    }
   },
   writing: function() {
-      
+
     if (this.type === 'Angular_ES5') {
-        
+
         if (this.angularES5SubType === 'Controller') {
           this.fs.copyTpl(
             this.templatePath('src/js/angular/es5/controllers/index.tpl.js'),
@@ -106,9 +132,9 @@ module.exports = generators.Base.extend({
           );
         }
     }
-    
+
     if (this.type === 'Node_ES5') {
-        
+
         if (this.nodeES5Subtype === 'RPC') {
           this.fs.copyTpl(
             this.templatePath('src/js/node/es5/rpc/index.tpl.js'),
@@ -117,7 +143,7 @@ module.exports = generators.Base.extend({
             }
           );
         }
-        
+
         if (this.nodeES5Subtype === 'API_Controller') {
           this.fs.copyTpl(
             this.templatePath('src/js/node/es5/controllers/index.tpl.js'),
@@ -146,7 +172,45 @@ module.exports = generators.Base.extend({
           );
         }
     }
-    
+
+    if (this.type === 'Component') {
+        console.log('writing component');
+
+        this.fs.copyTpl(
+          this.templatePath('src/js/angular/es6/component/template.html'),
+          this.destinationPath(`${this.fileName}-component-template.html`), {
+              className: this.className,
+              schema: this.schemaData.schema
+          }
+        );
+
+        this.fs.copyTpl(
+          this.templatePath('src/js/angular/es6/component/styles.scss'),
+          this.destinationPath(`${this.fileName}-component.scss`), {
+              className: this.className,
+              schema: this.schemaData.schema
+          }
+        );
+
+
+        var lowerCamelCaseName = this.fileName
+          .toLowerCase()
+          .split('-')
+          .map(function(p, i) {
+            if (i === 0) {
+                return p;
+            } else {
+                return p.substring(0, 1).toUpperCase() + p.slice(1)
+            }
+        }).join('');
+
+        this.fs.copyTpl(
+          this.templatePath('src/js/angular/es6/component/component.es6'),
+          this.destinationPath(`${this.fileName}-component.es6`), {
+              componentName: lowerCamelCaseName
+          }
+        );
+    }
   },
   end: function(){
     helper.printFarewell(this);

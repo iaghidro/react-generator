@@ -2,5 +2,6 @@
 
 module.exports = {
   common: require('./helper.js'),
-  asciiArt: require('./asciiArt')
+  asciiArt: require('./asciiArt'),
+  schemaHelper: require('./schema.js')
 };

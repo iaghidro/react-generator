@@ -1,0 +1,11 @@
+<div class="<%= className %>">
+    <div class="<%= className %>__wrapper">
+        <h2 class="<%= className %>__header">Loan Review</h2>
+    </div>
+
+    <% schema.forEach(function(item) { %>
+    <div class="<%= className %>__<%= item %>-wrapper">
+        <input class="<%= className %>__<%= item %>-field" type="text" name="<%= item %>" />
+    </div>
+    <% }) %>
+</div>
