@@ -80,7 +80,6 @@ module.exports = generators.Base.extend({
               when: this.type === 'Component'
           }, function (answers) {
               this.schemaData = schemaHelper.parse(answers.schema);
-              console.dir(this.schemaData);
               done();
           }.bind(this));
       },

@@ -10,7 +10,6 @@
   }
 
   &__form {
-    @extend .form;
   }
   <% schema.forEach(function(key) { %>
   &__<%= key.kebabCase %>-wrapper {
