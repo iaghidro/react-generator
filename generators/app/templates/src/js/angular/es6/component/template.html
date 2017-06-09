@@ -11,8 +11,10 @@
         </div>
         <% }) %>
 
-        <button class="<%= className %>__submit-btn" ng-click="$ctrl.onSubmit()" ng-disabled="$ctrl.<%= fileNameLowerCamelCase %>Form.$invalid">Save</button>
-        <button class="<%= className %>__cancel-btn" ng-click="$ctrl.onCancel()">Save</button>
+        <div class="<%= className %>__controls-wrapper">
+            <button class="<%= className %>__submit-btn" ng-click="$ctrl.onSubmit()" ng-disabled="$ctrl.<%= fileNameLowerCamelCase %>Form.$invalid">Save</button>
+            <button class="<%= className %>__cancel-btn" ng-click="$ctrl.onCancel()">Cancel</button>
+        </div>
 
     </form>
 

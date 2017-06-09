@@ -21,6 +21,10 @@
     @extend .form-control;
   }
 
+  &__controls-wrapper {
+    @include .make-md-column(12);
+  }
+
   &__submit-btn {
     @extend .form-control;
     @extend .btn;
@@ -28,7 +32,7 @@
     @extend .btn-sm;
   }
 
-  &__submit-cancel {
+  &__cancel-btn {
     @extend .form-control;
     @extend .btn;
     @extend .btn-sm;
