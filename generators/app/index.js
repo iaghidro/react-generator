@@ -173,7 +173,7 @@ module.exports = generators.Base.extend({
 
         this.fs.copyTpl(
           this.templatePath('src/js/angular/es6/component/styles.scss'),
-          this.destinationPath(`${this.fileName}-component.scss`), {
+          this.destinationPath(`_${this.fileName}-component.scss`), {
               className: this.className,
               schema: this.schemaData.schema
           }
