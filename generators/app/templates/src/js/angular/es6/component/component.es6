@@ -6,7 +6,7 @@
             presence: '='
         },
         controller: <%= componentName %>Controller,
-        templateUrl: 'template.html'
+        templateUrl: '<%= cwd %>/<%= fileName %>-component-template.html'
     };
 
     <%= componentName %>Controller.$inject = [];

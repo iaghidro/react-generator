@@ -3,9 +3,12 @@
         <h2 class="<%= className %>__header">Loan Review</h2>
     </div>
 
-    <% schema.forEach(function(item) { %>
-    <div class="<%= className %>__<%= item %>-wrapper">
-        <input class="<%= className %>__<%= item %>-field" type="text" name="<%= item %>" />
-    </div>
-    <% }) %>
+    <form name="$ctrl.form">
+        <% schema.forEach(function(item) { %>
+        <div class="<%= className %>__<%= item.kebabCase %>-wrapper">
+            <input class="<%= className %>__<%= item.kebabCase %>-field" type="text" name="<%= item.kebabCase %>" ng-model="$ctrl.form.<%= item.lowerCamelCase %>" required />
+        </div>
+        <% }) %>
+    </form>
+
 </div>

@@ -12,15 +12,13 @@
   &__form {
     @extend .form;
   }
-
   <% schema.forEach(function(key) { %>
+  &__<%= key.kebabCase %>-wrapper {
+    @include make-md-column(12);
+  }
 
-    &__<%= key %>-wrapper {
-      @include make-md-column(12);
-    }
-
-    &__<%= key %>-field {
-      @extend .form-control;
-    }
+  &__<%= key.kebabCase %>-field {
+    @extend .form-control;
+  }
   <% }) %>
 }
