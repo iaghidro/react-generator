@@ -27,6 +27,8 @@ module.exports = generators.Base.extend({
           }, function (answers) {
               this.fileName = answers.name;
               this.fileNameLowerCase = answers.name.toLowerCase();
+              this.fileNameLowerCamelCase = helper.lowerCamelCase(answers.name);
+
               done();
           }.bind(this));
       },
@@ -167,7 +169,8 @@ module.exports = generators.Base.extend({
           this.destinationPath(`${this.fileName}-component-template.html`), {
               className: this.className,
               schema: this.schemaData.schema,
-              kebabCaseSchema: this.schemaData.kebabCaseSchema
+              kebabCaseSchema: this.schemaData.kebabCaseSchema,
+              fileNameLowerCamelCase: this.fileNameLowerCamelCase
           }
         );
 

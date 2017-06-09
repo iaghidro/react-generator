@@ -3,12 +3,17 @@
         <h2 class="<%= className %>__header">Loan Review</h2>
     </div>
 
-    <form name="$ctrl.form">
+    <form name="<%= fileNameLowerCamelCase %>Form">
         <% schema.forEach(function(item) { %>
         <div class="<%= className %>__<%= item.kebabCase %>-wrapper">
-            <input class="<%= className %>__<%= item.kebabCase %>-field" type="text" name="<%= item.kebabCase %>" ng-model="$ctrl.form.<%= item.lowerCamelCase %>" required />
+            <label><%= item.plainText %></label>
+            <input class="<%= className %>__<%= item.kebabCase %>-field" type="text" name="<%= item.kebabCase %>" ng-model="$ctrl.<%= fileNameLowerCamelCase %>Form.<%= item.lowerCamelCase %>" required />
         </div>
         <% }) %>
+
+        <button class="<%= className %>__submit-btn" ng-click="$ctrl.onSubmit()" ng-disabled="$ctrl.<%= fileNameLowerCamelCase %>Form.$invalid">Save</button>
+        <button class="<%= className %>__cancel-btn" ng-click="$ctrl.onCancel()">Save</button>
+
     </form>
 
 </div>

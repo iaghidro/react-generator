@@ -7,7 +7,8 @@ module.exports = {
         var fullSchema = schemaArr.map(function(field) {
             return  {
                 lowerCamelCase: field,
-                kebabCase: helper.toKebabCase(field)
+                kebabCase: helper.toKebabCase(field),
+                plainText: helper.toPlainText(field)
             };
         });
 

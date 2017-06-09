@@ -16,7 +16,15 @@
         this.$onInit = function() {
             vm = this;
             vm.foo = 'bar';
+            vm.onCancel = onCancel;
+            vm.onSubmit = onSubmit;
         };
+
+        function onCancel() {
+        }
+
+        function onSubmit() {
+        }
     }
 
     angular.module(moduleName)

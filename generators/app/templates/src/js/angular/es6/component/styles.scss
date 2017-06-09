@@ -14,10 +14,24 @@
   <% schema.forEach(function(key) { %>
   &__<%= key.kebabCase %>-wrapper {
     @include make-md-column(12);
+    @extend .form-group;
   }
 
   &__<%= key.kebabCase %>-field {
     @extend .form-control;
+  }
+
+  &__submit-btn {
+    @extend .form-control;
+    @extend .btn;
+    @extend .btn-success;
+    @extend .btn-sm;
+  }
+
+  &__submit-cancel {
+    @extend .form-control;
+    @extend .btn;
+    @extend .btn-sm;
   }
   <% }) %>
 }

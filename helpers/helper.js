@@ -64,6 +64,26 @@ var toKebabCase = function toKebabCase(lowerCamelCaseString) {
     return parts.join('').toLowerCase();
 };
 
+var toPlainText = function toPlainText(lowerCamelCaseString) {
+    var parts = lowerCamelCaseString.split('');
+    var insertSpacesIndex = [];
+
+    for (var i = 0; i < parts.length; i++) {
+        if (parts[i] === parts[i].toUpperCase()){
+            insertSpacesIndex.push(i)
+        }
+    }
+
+    insertSpacesIndex.forEach(function(i) {
+        parts.splice(i, 0, ' ');
+    });
+
+    //capitalize first char
+    parts[0] = parts[0].toUpperCase();
+
+    return parts.join('');
+};
+
 var getCwd = function getCwd(args){
     var fullCwd = args[0];
 
@@ -86,5 +106,6 @@ module.exports = {
   moduleNameMatchesDirectory: moduleNameMatchesDirectory,
   printFarewell: printFarewell,
   renameDirectoryToMatchModuleName: renameDirectoryToMatchModuleName,
-  toKebabCase: toKebabCase
+  toKebabCase: toKebabCase,
+  toPlainText: toPlainText
 };
