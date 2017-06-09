@@ -1,21 +1,23 @@
 <div class="<%= className %>">
     <div class="<%= className %>__wrapper">
         <h2 class="<%= className %>__header">Loan Review</h2>
+
+        <form name="<%= fileNameLowerCamelCase %>Form">
+            <% schema.forEach(function(item) { %>
+            <div class="<%= className %>__row">
+                <div class="<%= className %>__<%= item.kebabCase %>-wrapper">
+                    <label><%= item.plainText %></label>
+                    <input class="<%= className %>__<%= item.kebabCase %>-field" type="text" name="<%= item.kebabCase %>" ng-model="$ctrl.<%= fileNameLowerCamelCase %>Form.<%= item.lowerCamelCase %>" required />
+                </div>
+            </div>
+            <% }) %>
+
+            <div class="<%= className %>__row">
+                <div class="<%= className %>__controls-wrapper">
+                    <button class="<%= className %>__submit-btn" ng-click="$ctrl.onSubmit()" ng-disabled="$ctrl.<%= fileNameLowerCamelCase %>Form.$invalid">Save</button>
+                    <button class="<%= className %>__cancel-btn" ng-click="$ctrl.onCancel()">Cancel</button>
+                </div>
+            </div>
+        </form>
     </div>
-
-    <form name="<%= fileNameLowerCamelCase %>Form">
-        <% schema.forEach(function(item) { %>
-        <div class="<%= className %>__<%= item.kebabCase %>-wrapper">
-            <label><%= item.plainText %></label>
-            <input class="<%= className %>__<%= item.kebabCase %>-field" type="text" name="<%= item.kebabCase %>" ng-model="$ctrl.<%= fileNameLowerCamelCase %>Form.<%= item.lowerCamelCase %>" required />
-        </div>
-        <% }) %>
-
-        <div class="<%= className %>__controls-wrapper">
-            <button class="<%= className %>__submit-btn" ng-click="$ctrl.onSubmit()" ng-disabled="$ctrl.<%= fileNameLowerCamelCase %>Form.$invalid">Save</button>
-            <button class="<%= className %>__cancel-btn" ng-click="$ctrl.onCancel()">Cancel</button>
-        </div>
-
-    </form>
-
 </div>

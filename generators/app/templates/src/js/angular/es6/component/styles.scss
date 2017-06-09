@@ -1,6 +1,10 @@
 .<%= className %> {
   @include make-row();
 
+  &__row {
+    @include make-row();
+  }
+
   &__wrapper {
     @include make-md-column(12);
   }
@@ -20,22 +24,21 @@
   &__<%= key.kebabCase %>-field {
     @extend .form-control;
   }
+  <% }) %>
 
   &__controls-wrapper {
-    @include .make-md-column(12);
+    @include make-md-column(12);
   }
 
   &__submit-btn {
-    @extend .form-control;
     @extend .btn;
     @extend .btn-success;
     @extend .btn-sm;
   }
 
   &__cancel-btn {
-    @extend .form-control;
     @extend .btn;
+    @extend .btn-default;
     @extend .btn-sm;
   }
-  <% }) %>
 }
