@@ -2,12 +2,12 @@
     <div class="<%= className %>__wrapper">
         <h2 class="<%= className %>__header">Loan Review</h2>
 
-        <form name="<%= fileNameLowerCamelCase %>Form">
+        <form name="$ctrl.<%= fileNameLowerCamelCase %>Form">
             <% schema.forEach(function(item) { %>
             <div class="<%= className %>__row">
                 <div class="<%= className %>__<%= item.kebabCase %>-wrapper">
                     <label><%= item.plainText %></label>
-                    <input class="<%= className %>__<%= item.kebabCase %>-field" type="text" name="<%= item.kebabCase %>" ng-model="$ctrl.<%= fileNameLowerCamelCase %>Form.<%= item.lowerCamelCase %>" required />
+                    <input class="<%= className %>__<%= item.kebabCase %>-field" type="text" name="<%= item.kebabCase %>" ng-model="$ctrl.<%= item.lowerCamelCase %>" required />
                 </div>
             </div>
             <% }) %>

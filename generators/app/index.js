@@ -169,7 +169,6 @@ module.exports = generators.Base.extend({
           this.destinationPath(`${this.fileName}-component-template.html`), {
               className: this.className,
               schema: this.schemaData.schema,
-              kebabCaseSchema: this.schemaData.kebabCaseSchema,
               fileNameLowerCamelCase: this.fileNameLowerCamelCase
           }
         );
