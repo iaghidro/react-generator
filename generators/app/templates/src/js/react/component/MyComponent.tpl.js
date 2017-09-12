@@ -7,7 +7,7 @@ import common from 'ui-react-common';
 import * as selectors from './state-selectors/index';
 import * as actions from './actions/index';
 
-export class MyComponent extends Component {
+export class <%=foo %> extends Component {
 
     render() {
 
