@@ -1,5 +1,5 @@
 var joi = require('joi');
-var helper = require('./helper');
+var helper = require('./common');
 
 module.exports = {
     parse: function(schema) {

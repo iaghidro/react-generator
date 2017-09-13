@@ -1,4 +1,5 @@
 const helpers = require('../../helpers');
+const commonHelper = helpers.common;
 
 'use strict';
 const Generator = require('yeoman-generator');
@@ -19,16 +20,23 @@ module.exports = class extends Generator {
       type: 'input',
       name: 'name',
       message: 'What is the name of your component?',
-      default: 'MyComponent'
+      default: 'myComponent'
     }];
 
     return this.prompt(prompts)
-      .then((prompts) => {
-        this.component.name = prompts.name;
+      .then((answers) => {
+        Object.assign(this.component, {
+          name: answers.name,
+          titleCase: commonHelper.toPlainText(answers.name),
+          kebabCase: commonHelper.toKebabCase(answers.name),          
+          lowerCamelCase: commonHelper.toLowerCamelCase(answers.name)          
+        });
       });
   }
 
   writing() {
+    console.dir(this.component);
+
     this.fs.copyTpl(
       this.templatePath('component/MyComponent.js'),
       this.destinationPath(`${this.component.name}.js`),

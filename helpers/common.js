@@ -34,8 +34,8 @@ var copyPackageJson = function copyPackageJson(generator) {
   );
 };
 
-var lowerCamelCase = function lowerCamelCase(kebabCaseString) {
-    return kebabCaseString
+var toLowerCamelCase = function toLowerCamelCase(lowerCamelCaseString) {
+    return toKebabCase(lowerCamelCaseString)
       .toLowerCase()
       .split('-')
       .map(function(p, i) {
@@ -102,7 +102,7 @@ module.exports = {
   copyPackageJson: copyPackageJson,
   createModuleName: createModuleName,
   getCwd: getCwd,
-  lowerCamelCase: lowerCamelCase,
+  toLowerCamelCase: toLowerCamelCase,
   moduleNameMatchesDirectory: moduleNameMatchesDirectory,
   printFarewell: printFarewell,
   renameDirectoryToMatchModuleName: renameDirectoryToMatchModuleName,
