@@ -15,7 +15,7 @@ import Connected<%= upperCamelCase %>, {<%= upperCamelCase %>} from './<%= upper
 
 describe('<%= upperCamelCase %>', () => {
 
-    it('should render', () => {
+    it('should render <%= upperCamelCase %>', () => {
         shallow(<<%= upperCamelCase %>/>);
     });
 
@@ -46,7 +46,7 @@ describe('Connected<%= upperCamelCase %>', () => {
         });
     });
 
-    it('should render connected', () => {
+    it('should render connected <%= upperCamelCase %>', () => {
         shallow(<Connected<%= upperCamelCase %> 
             store={store}/>);
     });

@@ -3,7 +3,7 @@ import { expect } from 'chai';
 import * as types from '../my-component-types';
 import reducer from './my-reducer';
 
-describe('reducers:MyComponent', () => {
+describe('reducers:<%= kebabCase %>', () => {
 
     it('should return the initial state', () => {
         const newState = {

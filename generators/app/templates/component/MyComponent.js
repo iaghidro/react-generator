@@ -12,7 +12,7 @@ export class <%= upperCamelCase %> extends Component {
     render() {
 
         return (
-                <div id="connectedComponentName">
+                <div id="<%= lowerCamelCase %>">
                 </div>
                 );
     }

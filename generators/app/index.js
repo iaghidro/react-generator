@@ -36,19 +36,31 @@ module.exports = class extends Generator {
   }
 
   writing() {
-    console.dir(this.component);
-
     //component
     this.fs.copyTpl(
       this.templatePath('component/MyComponent.js'),
-      this.destinationPath(`${this.component.name}.js`),
+      this.destinationPath(`${this.component.upperCamelCase}.js`),
       this.component
     );
 
     //component unit test
     this.fs.copyTpl(
       this.templatePath('component/MyComponent.test.js'),
-      this.destinationPath(`${this.component.name}.test.js`),
+      this.destinationPath(`${this.component.upperCamelCase}.test.js`),
+      this.component
+    );
+
+    //reducer
+    this.fs.copyTpl(
+      this.templatePath('component/reducers/my-reducer.js'),
+      this.destinationPath(`reducers/${this.component.kebabCase}.js`),
+      this.component
+    );
+
+    //reducer unit test
+    this.fs.copyTpl(
+      this.templatePath('component/reducers/my-reducer.test.js'),
+      this.destinationPath(`reducers/${this.component.kebabCase}.test.js`),
       this.component
     );
   }
