@@ -11,16 +11,16 @@ import { shallow, mount} from 'enzyme';
 import { expect } from 'chai';
 import sinon from 'sinon';
 
-import ConnectedMyComponent, {MyComponent} from './MyComponent';
+import Connected<%= upperCamelCase %>, {<%= upperCamelCase %>} from './<%= upperCamelCase %>';
 
-describe('MyComponent', () => {
+describe('<%= upperCamelCase %>', () => {
 
     it('should render', () => {
-        shallow(<MyComponent/>);
+        shallow(<<%= upperCamelCase %>/>);
     });
 
     it('should test something else here', () => {
-        const wrapper = shallow(<MyComponent/>);
+        const wrapper = shallow(<<%= upperCamelCase %>/>);
 //        expect(wrapper.find(SubComponent).exists()).to.equal(true);
     });
 
@@ -35,7 +35,7 @@ import configureMockStore from 'redux-mock-store';
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
-describe('ConnectedMyComponent', () => {
+describe('Connected<%= upperCamelCase %>', () => {
     let store;
 
     beforeEach(() => {
@@ -47,7 +47,7 @@ describe('ConnectedMyComponent', () => {
     });
 
     it('should render connected', () => {
-        shallow(<ConnectedMyComponent 
+        shallow(<Connected<%= upperCamelCase %> 
             store={store}/>);
     });
 

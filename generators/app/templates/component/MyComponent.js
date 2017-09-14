@@ -7,7 +7,7 @@ import common from 'ui-react-common';
 import * as selectors from './state-selectors/index';
 import * as actions from './actions/index';
 
-export class <%= name %> extends Component {
+export class <%= upperCamelCase %> extends Component {
 
     render() {
 
@@ -19,7 +19,7 @@ export class <%= name %> extends Component {
 
 }
 
-MyComponent.propTypes = {
+<%= upperCamelCase %>.propTypes = {
 
 };
 
@@ -35,4 +35,4 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(MyComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(<%= upperCamelCase %>);

@@ -34,15 +34,14 @@ var copyPackageJson = function copyPackageJson(generator) {
   );
 };
 
-var toLowerCamelCase = function toLowerCamelCase(lowerCamelCaseString) {
-    return toKebabCase(lowerCamelCaseString)
-      .toLowerCase()
-      .split('-')
+var toUpperCamelCase = function toUpperCamelCase(lowerCamelCaseString) {
+    return lowerCamelCaseString
+      .split('')
       .map(function(p, i) {
           if (i === 0) {
-              return p;
+              return p.toUpperCase();
           } else {
-              return p.substring(0, 1).toUpperCase() + p.slice(1)
+              return p;
           }
       }).join('');
 };
@@ -102,7 +101,7 @@ module.exports = {
   copyPackageJson: copyPackageJson,
   createModuleName: createModuleName,
   getCwd: getCwd,
-  toLowerCamelCase: toLowerCamelCase,
+  toUpperCamelCase: toUpperCamelCase,
   moduleNameMatchesDirectory: moduleNameMatchesDirectory,
   printFarewell: printFarewell,
   renameDirectoryToMatchModuleName: renameDirectoryToMatchModuleName,
