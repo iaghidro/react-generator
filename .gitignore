@@ -1,2 +1,10 @@
-node_modules
+node_modules/
+generated
+.DS_Store
+*.log
+junitresults.xml
+/nbproject/
+/tests/results/
+bundle.js
+.idea
 coverage
