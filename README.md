@@ -1,5 +1,4 @@
-# generator-rlreact [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
-> Scaffolding tools for RocketLoans React projects
+Scaffolding tools for RocketLoans React projects
 
 ## Installation
 
