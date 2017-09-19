@@ -1,3 +1,3 @@
 export const FETCHING = 'FETCHING';
 export const FAILED = 'FAILED';
-export const SUCCESS = 'SUCCESS';
+export const RECEIVED_SOMETHING = 'RECEIVED_SOMETHING';

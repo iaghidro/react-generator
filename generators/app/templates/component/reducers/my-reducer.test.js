@@ -1,7 +1,8 @@
 import { expect } from 'chai';
 
-import * as types from '../my-component-types';
-import reducer from './my-reducer';
+import * as types from '../<%= kebabCase %>-types';
+import reducer from './<%= kebabCase %>';
+import deepFreeze from 'deep-freeze';
 
 describe('reducers:<%= kebabCase %>', () => {
 
@@ -26,6 +27,7 @@ describe('reducers:<%= kebabCase %>', () => {
             type: types.FAILED,
             error: {code: 'bad'}
         };
+        deepFreeze(previousState);
         expect(reducer(previousState, action)).deep.equal(newState);
     });
 

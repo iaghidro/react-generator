@@ -20,7 +20,7 @@ First, install [Yeoman](http://yeoman.io) and generator-rlreact using [npm](http
 
     npm link
 
-# Usage
+## Usage
 
 1) Start app from a directory of your choosing
 
