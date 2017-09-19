@@ -8,7 +8,7 @@ import * as actions from './<%= kebabCase %>';
 import * as types from '../<%= kebabCase %>-types';
 
 const globalTypes = common.globals.constants.actionTypes;
-import LoanReview from '../myModelInstance';
+import myModelInstance from '../myModelInstance';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
@@ -16,7 +16,7 @@ const mockResponse = {hi: "hello"};
 
 describe('actions::<%= kebabCase %>', () => {
 
-    describe('resetFilters', () => {
+    describe('fetching', () => {
 
         it('should create action for FETCHING', () => {
             const expectedAction = {
@@ -31,7 +31,7 @@ describe('actions::<%= kebabCase %>', () => {
         let fetchSomethingStub;
 
         beforeEach(() => {
-            fetchSomethingStub = sinon.stub(LoanReview.prototype, 'fetchSomething');
+            fetchSomethingStub = sinon.stub(myModelInstance.prototype, 'fetchSomething');
         });
 
         afterEach(() => {
