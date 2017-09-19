@@ -1,4 +1,4 @@
-import * as types from './my-component-types';
+import * as types from './<%= kebabCase %>-types';
 
 const defaultState = {
     hasError: false,

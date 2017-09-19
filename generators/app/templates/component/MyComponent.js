@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 import { Alert } from 'react-bootstrap';
 import common from 'ui-react-common';
 
-import * as selectors from './state-selectors/index';
-import * as actions from './actions/index';
+// import * as selectors from './state-selectors/index';
+// import * as actions from './actions/index';
 
 export class <%= upperCamelCase %> extends Component {
 

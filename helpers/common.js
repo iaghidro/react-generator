@@ -56,8 +56,8 @@ var toKebabCase = function toKebabCase(lowerCamelCaseString) {
         }
     }
 
-    insertDashesIndex.forEach(function(i) {
-        parts.splice(i, 0, '-');
+    insertDashesIndex.forEach(function(i, idx) {
+        parts.splice(i + idx, 0, '-');
     });
 
     return parts.join('').toLowerCase();

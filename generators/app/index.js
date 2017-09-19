@@ -27,10 +27,10 @@ module.exports = class extends Generator {
       .then((answers) => {
         Object.assign(this.component, {
           name: answers.name,
-          lowerCamelCase: answers.name,          
+          lowerCamelCase: answers.name,
           titleCase: commonHelper.toPlainText(answers.name),
-          kebabCase: commonHelper.toKebabCase(answers.name),          
-          upperCamelCase: commonHelper.toUpperCamelCase(answers.name)          
+          kebabCase: commonHelper.toKebabCase(answers.name),
+          upperCamelCase: commonHelper.toUpperCamelCase(answers.name)
         });
       });
   }
@@ -40,6 +40,13 @@ module.exports = class extends Generator {
     this.fs.copyTpl(
       this.templatePath('component/MyComponent.js'),
       this.destinationPath(`${this.component.upperCamelCase}.js`),
+      this.component
+    );
+
+    //component types
+    this.fs.copyTpl(
+      this.templatePath('component/my-component-types.js'),
+      this.destinationPath(`${this.component.kebabCase}-types.js`),
       this.component
     );
 
@@ -61,6 +68,20 @@ module.exports = class extends Generator {
     this.fs.copyTpl(
       this.templatePath('component/reducers/my-reducer.test.js'),
       this.destinationPath(`reducers/${this.component.kebabCase}.test.js`),
+      this.component
+    );
+
+    //actions
+    this.fs.copyTpl(
+      this.templatePath('component/actions/my-action.js'),
+      this.destinationPath(`actions/${this.component.kebabCase}.js`),
+      this.component
+    );
+
+    //actions unit test
+    this.fs.copyTpl(
+      this.templatePath('component/actions/my-action.test.js'),
+      this.destinationPath(`actions/${this.component.kebabCase}.test.js`),
       this.component
     );
   }
