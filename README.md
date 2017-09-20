@@ -44,3 +44,34 @@ Once you've created your new component, here are the next couple of steps that r
 
 3) add the new component to the barrel file for angular access in appRoot/index.js
 
+
+## What's supported
+
+Currently the generator will create the following:
+
+1) Connected React component (connected to the redux store)
+
+2) A test file with a basic test for the component, and one for the connected component
+
+3) A reducer 
+
+4) Test for the reducer
+
+5) Actions (a simple, and an async)
+
+7) Test for the two actions
+
+8) State selector
+
+9) Test for the state selector
+
+10) A Model 
+
+11) model instance
+
+12) component types file
+
+
+## Unit tests
+
+There is one unit test that will fail on purpose, so the developer will fix this, and encourage test coverage
