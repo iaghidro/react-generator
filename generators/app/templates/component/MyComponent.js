@@ -4,15 +4,21 @@ import { connect } from 'react-redux';
 import { Alert } from 'react-bootstrap';
 import common from 'ui-react-common';
 
-// import * as selectors from './state-selectors/index';
-// import * as actions from './actions/index';
+ import * as selectors from './state-selectors/<%= kebabCase %>';
+ import * as actions from './actions/<%= kebabCase %>';
 
 export class <%= upperCamelCase %> extends Component {
 
     render() {
+        const {
+            firstItem,
+            firstAction
+        } = this.props;
 
         return (
                 <div id="<%= lowerCamelCase %>">
+                    <div> My Item: { firstItem } </div>
+                    <div onclick="(event) => firstAction('myValue')"></div>
                 </div>
                 );
     }
@@ -20,18 +26,19 @@ export class <%= upperCamelCase %> extends Component {
 }
 
 <%= upperCamelCase %>.propTypes = {
-
+    firstItem: PropTypes.obj,
+    firstAction: PropTypes.func
 };
 
 const mapStateToProps = (state) => {
     return {
-//        firstItem: selectors.getFirstItem(state),
+//        firstItem: selectors.getItem(state),
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-//        firstAction: (firstParam) => dispatch(actions.doFirstAction(firstParam)),
+        firstAction: (firstParam) => dispatch(actions.fetchSomething(firstParam)),
     };
 };
 

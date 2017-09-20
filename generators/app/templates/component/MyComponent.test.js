@@ -22,6 +22,10 @@ describe('<%= upperCamelCase %>', () => {
     it('should test something else here', () => {
         const wrapper = shallow(<<%= upperCamelCase %>/>);
 //        expect(wrapper.find(SubComponent).exists()).to.equal(true);
+
+        // TO DEVELOPER: FIX THIS BROKEN TEST!
+        const developerWroteTest = false;
+        expect(developerWroteTest).to.equal(true);
     });
 
 });
