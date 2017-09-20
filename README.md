@@ -20,11 +20,27 @@ First, install [Yeoman](http://yeoman.io) and generator-rlreact using [npm](http
 
     npm link
 
+
 ## Usage
 
-1) Start app from a directory of your choosing
+1) Create a new directory after your component, ex: 'myComponent'
+
+2) cd into your directory
+
+3) start the generator
 
     yo rlreact
 
-2) follow prompts :)
+4) follow prompts :)
+
+
+## Next Steps 
+
+Once you've created your new component, here are the next couple of steps that require a manual touch (for now)
+
+1) add the new reducer to the root reducer in appRoot/reduxReducer
+
+2) add an api to the model instance located in models/
+
+3) add the new component to the barrel file for angular access in appRoot/index.js
 
