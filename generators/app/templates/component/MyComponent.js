@@ -18,7 +18,7 @@ export class <%= upperCamelCase %> extends Component {
         return (
                 <div id="<%= lowerCamelCase %>">
                     <div> My Item: { firstItem } </div>
-                    <div onclick="(event) => firstAction('myValue')"></div>
+                    <div onClick={(event) => firstAction('myValue')}></div>
                 </div>
                 );
     }
