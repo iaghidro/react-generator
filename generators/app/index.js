@@ -98,7 +98,21 @@ module.exports = class extends Generator {
       this.destinationPath(`${this.component.lowerCamelCase}Instance.js`),
       this.component
     );
-    
+
+    //state selectors
+    this.fs.copyTpl(
+      this.templatePath('component/state-selectors/my-selector.js'),
+      this.destinationPath(`state-selectors/${this.component.kebabCase}.js`),
+      this.component
+    );
+
+    //state selectors unit test
+    this.fs.copyTpl(
+      this.templatePath('component/state-selectors/my-selector.test.js'),
+      this.destinationPath(`state-selectors/${this.component.kebabCase}.test.js`),
+      this.component
+    );
+
   }
 
   end() {

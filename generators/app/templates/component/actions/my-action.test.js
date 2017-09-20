@@ -43,12 +43,12 @@ describe('actions::<%= kebabCase %>', () => {
             
             const expectedActions = [
                 {type: types.FETCHING},
-                {type: types.RECEIVED_SOMETHING, something: 'value'}
+                {type: types.RECEIVED_SOMETHING, something: {hi: "hello"}}
             ];
 
             const store = mockStore({myStore: {}});
 
-            return store.dispatch(actions.fetchSomething('value')).then(() => {
+            return store.dispatch(actions.fetchSomething()).then(() => {
                 expect(store.getActions()).deep.equal(expectedActions);
             });
         });
