@@ -27,4 +27,5 @@ const reducer = (state = defaultState, action) => {
             break;
     }
 };
+
 export default reducer;
