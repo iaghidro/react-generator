@@ -118,7 +118,7 @@ module.exports = class extends Generator {
   end() {
     this.log(yosay(
       `Next steps:
-        1) add the new reducer to the root reducer in appRoot/reduxReducer
+        1) add the new reducer to the root reducer in appRoot/reduxStore
         2) add an api to the model instance located in models/
         3) add the new component to the barrel file for angular access in appRoot/index.js`
     ));

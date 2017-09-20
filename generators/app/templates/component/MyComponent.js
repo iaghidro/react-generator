@@ -26,13 +26,13 @@ export class <%= upperCamelCase %> extends Component {
 }
 
 <%= upperCamelCase %>.propTypes = {
-    firstItem: PropTypes.obj,
+    firstItem: PropTypes.string,
     firstAction: PropTypes.func
 };
 
 const mapStateToProps = (state) => {
     return {
-//        firstItem: selectors.getItem(state),
+        firstItem: selectors.getItem(state),
     };
 };
 

@@ -2,29 +2,21 @@ import * as types from '../<%= kebabCase %>-types';
 
 const defaultState = {
     hasError: false,
-    error: null
+    error: null,
+    item: 'First Item'
 };
 
 const reducer = (state = defaultState, action) => {
-    const {
-        hasError,
-        error
-    } = state;
-
     switch (action.type) {
 
         case types.FAILED:
-            return {
-                hasError: true,
-                error: action.error
-            };
-            break;
+          return Object.assign({}, state, { hasError: !state.hasError });
+
+          break;
         default:
-            return {
-                hasError,
-                error
-            };
-            break;
+          return Object.assign({}, state);
+
+          break;
     }
 };
 
