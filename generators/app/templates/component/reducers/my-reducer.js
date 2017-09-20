@@ -1,4 +1,4 @@
-import * as types from './<%= kebabCase %>-types';
+import * as types from '../<%= kebabCase %>-types';
 
 const defaultState = {
     hasError: false,

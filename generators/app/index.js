@@ -84,6 +84,21 @@ module.exports = class extends Generator {
       this.destinationPath(`actions/${this.component.kebabCase}.test.js`),
       this.component
     );
+
+    //models
+    this.fs.copyTpl(
+      this.templatePath('component/models/MyModel.js'),
+      this.destinationPath(`models/${this.component.upperCamelCase}.js`),
+      this.component
+    );
+
+    //model instance
+    this.fs.copyTpl(
+      this.templatePath('component/myModelInstance.js'),
+      this.destinationPath(`${this.component.lowerCamelCase}Instance.js`),
+      this.component
+    );
+    
   }
 
   end() {

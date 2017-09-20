@@ -8,7 +8,7 @@ import * as actions from './<%= kebabCase %>';
 import * as types from '../<%= kebabCase %>-types';
 
 const globalTypes = common.globals.constants.actionTypes;
-import myModelInstance from '../myModelInstance';
+import <%= upperCamelCase %> from '../models/<%= upperCamelCase %>';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
@@ -31,7 +31,7 @@ describe('actions::<%= kebabCase %>', () => {
         let fetchSomethingStub;
 
         beforeEach(() => {
-            fetchSomethingStub = sinon.stub(myModelInstance.prototype, 'fetchSomething');
+            fetchSomethingStub = sinon.stub(<%= upperCamelCase %>.prototype, 'fetchSomething');
         });
 
         afterEach(() => {
