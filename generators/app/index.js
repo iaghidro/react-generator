@@ -118,7 +118,14 @@ module.exports = class extends Generator {
     //inject component into React barrel file
     commonHelper.insertLineBeforeLineContainingString.call(
       this,
-      '//inject-yeoman-components',
+      '//inject-yeoman-components-import',
+      '../../index.js',
+      `import ${ this.component.upperCamelCase } from './components/${ this.component.directory }/${ this.component.upperCamelCase }';`
+    );
+
+    commonHelper.insertLineBeforeLineContainingString.call(
+      this,
+      '//inject-yeoman-components-inject',
       '../../index.js',
       `window.angular.module(moduleName).value('${this.component.upperCamelCase}', wrapComponentWithRootView(${this.component.upperCamelCase}, store));`
     );
@@ -128,14 +135,14 @@ module.exports = class extends Generator {
       this,
       '//inject-yeoman-reducers-import',
       '../../reducers/index.js',
-      `import ${ this.component.lowerCamelCase } from '../components/${ this.component.directory }/reducers/${ this.component.kebabCase }'`
+      `import ${ this.component.lowerCamelCase } from '../components/${ this.component.directory }/reducers/${ this.component.kebabCase }';`
     );
 
     commonHelper.insertLineBeforeLineContainingString.call(
       this,
       '//inject-yeoman-reducers-combine',
       '../../reducers/index.js',
-      `${ this.component.lowerCamelCase }: ${ this.component.lowerCamelCase }`
+      `${ this.component.lowerCamelCase }: ${ this.component.lowerCamelCase },`
     );
   }
 
