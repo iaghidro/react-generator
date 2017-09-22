@@ -1,10 +1,11 @@
-const helpers = require('../../helpers');
-const commonHelper = helpers.common;
-
 'use strict';
 const Generator = require('yeoman-generator');
 const chalk = require('chalk');
 const yosay = require('yosay');
+const R = require('ramda');
+
+const helpers = require('../../helpers');
+const commonHelper = helpers.common;
 
 module.exports = class extends Generator {
   constructor(args, opts) {
@@ -30,7 +31,8 @@ module.exports = class extends Generator {
           lowerCamelCase: answers.name,
           titleCase: commonHelper.toPlainText(answers.name),
           kebabCase: commonHelper.toKebabCase(answers.name),
-          upperCamelCase: commonHelper.toUpperCamelCase(answers.name)
+          upperCamelCase: commonHelper.toUpperCamelCase(answers.name),
+          directory: R.last(this.env.cwd.split('/'))
         });
       });
   }
@@ -113,14 +115,35 @@ module.exports = class extends Generator {
       this.component
     );
 
+    //inject component into React barrel file
+    commonHelper.insertLineBeforeLineContainingString.call(
+      this,
+      '//inject-yeoman-components',
+      '../../index.js',
+      `window.angular.module(moduleName).value('${this.component.upperCamelCase}', wrapComponentWithRootView(${this.component.upperCamelCase}, store));`
+    );
+
+    //inject reducer into store
+    commonHelper.insertLineBeforeLineContainingString.call(
+      this,
+      '//inject-yeoman-reducers-import',
+      '../../reducers/index.js',
+      `import ${ this.component.lowerCamelCase } from '../components/${ this.component.directory }/reducers/${ this.component.kebabCase }'`
+    );
+
+    commonHelper.insertLineBeforeLineContainingString.call(
+      this,
+      '//inject-yeoman-reducers-combine',
+      '../../reducers/index.js',
+      `${ this.component.lowerCamelCase }: ${ this.component.lowerCamelCase }`
+    );
   }
 
   end() {
     this.log(yosay(
       `Next steps:
-        1) add the new reducer to the root reducer in appRoot/reduxStore
-        2) add an api to the model instance located in models/
-        3) add the new component to the barrel file for angular access in appRoot/index.js`
+        1) add an api to the model instance located in models/
+      `
     ));
   }
 };

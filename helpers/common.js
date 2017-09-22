@@ -1,5 +1,6 @@
 'use strict';
 var R = require('ramda');
+const path = require('path');
 var asciiArt = require('./asciiArt');
 
 var createModuleName = function createModuleName(name, path) {
@@ -97,6 +98,35 @@ var printFarewell = function printFarewell(generator) {
   generator.log(asciiArt.farewell + asciiArt.pusheenCat);
 };
 
+var insertLineBeforeLineContainingString = function (stringToFind, pathToFileRelativeToCwd, lineToInsert) {
+  let barrelFilePath = path.join(this.env.cwd, pathToFileRelativeToCwd);
+  let contents = this.fs.read(barrelFilePath);
+  let contentsArr = contents.split('\n');
+  let leftIndexOfLine;
+
+  let lineToInjectAt = R.findIndex((line) => {
+    leftIndexOfLine = line.indexOf(stringToFind);
+    return leftIndexOfLine !== -1;
+  })(contentsArr);
+
+  let injectedArr = contentsArr.map((line, idx) => {
+    if (idx === lineToInjectAt) {
+      let ws = '';
+
+      for (let i = 0; i < leftIndexOfLine; i++) {
+        ws+=' ';
+      }
+
+      return [`${ws}${lineToInsert}`, line];
+    }
+
+    return line;
+  });
+
+  injectedArr = R.flatten(injectedArr);
+  this.fs.write(barrelFilePath, injectedArr.join('\n'));
+};
+
 module.exports = {
   copyPackageJson: copyPackageJson,
   createModuleName: createModuleName,
@@ -106,5 +136,6 @@ module.exports = {
   printFarewell: printFarewell,
   renameDirectoryToMatchModuleName: renameDirectoryToMatchModuleName,
   toKebabCase: toKebabCase,
-  toPlainText: toPlainText
+  toPlainText: toPlainText,
+  insertLineBeforeLineContainingString
 };
