@@ -1,14 +1,10 @@
 import React, { Component, ReactDOM } from 'react';
 import PropTypes from 'prop-types';
 
-export default class extends Component {
+class <%= upperCamelCase %> extends Component {
     constructor(props) {
         super(props);
     }
-
-    static propTypes = {
-        text: PropTypes.string.isRequired
-    };
 
     componentWillMount() {
 
@@ -44,3 +40,10 @@ export default class extends Component {
 
     }
 }
+
+<%= upperCamelCase %>.propTypes = {
+  text: PropTypes.string.isRequired
+};
+
+
+export default <%= upperCamelCase %>;
