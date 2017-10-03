@@ -8,28 +8,9 @@ const helpers = require('../../helpers');
 const commonHelper = helpers.common;
 
 module.exports = class extends Generator {
-  prompting() {
+  writing() {
     this.component = this.config.get('component');
 
-    const prompts = [
-      {
-        type: 'list',
-        name: 'type',
-        message: 'What type of component are you building?',
-        choices: ['FullReduxWithInjectIntoParent', 'SimpleComponent'],
-        default: 'FullReduxWithInjectIntoParent'
-      }
-    ];
-
-    return this.prompt(prompts)
-      .then((answers) => {
-        Object.assign(this.component, {
-          type: answers.type
-        });
-      });
-  }
-
-  writing() {
     if (this.component.type !== 'SimpleComponent') {
       return;
     }

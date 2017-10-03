@@ -1,41 +1,13 @@
 'use strict';
 const Generator = require('yeoman-generator');
-const R = require('ramda');
 
 const helpers = require('../../helpers');
 const commonHelper = helpers.common;
 
 module.exports = class extends Generator {
-  prompting() {
+  writing() {
     this.component = this.config.get('component');
 
-    const prompts = [
-      {
-        type: 'input',
-        name: 'name',
-        message: 'What is the name of your component (lowerCamelCase)?',
-        default: 'myComponent'
-      }
-    ];
-
-    return this.prompt(prompts)
-      .then((answers) => {
-        Object.assign(this.component, {
-          name: answers.name,
-          lowerCamelCase: answers.name,
-          titleCase: commonHelper.toPlainText(answers.name),
-          kebabCase: commonHelper.toKebabCase(answers.name),
-          upperCamelCase: commonHelper.toUpperCamelCase(answers.name),
-          directory: R.last(this.env.cwd.split('/'))
-        });
-
-        console.dir(this.component)
-
-        this.config.set('component', this.component);
-      });
-  }
-
-  writing() {
     if (this.component.type !== 'FullReduxWithInjectIntoParent') {
       return;
     }

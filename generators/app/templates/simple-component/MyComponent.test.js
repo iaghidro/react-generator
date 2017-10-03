@@ -3,6 +3,8 @@ import { shallow, mount} from 'enzyme';
 import { expect } from 'chai';
 import sinon from 'sinon';
 
+import <%= upperCamelCase %> from './<%= upperCamelCase %>'
+
 describe('<%= upperCamelCase %>', () => {
   it('should render <%= upperCamelCase %>', () => {
     let props = {
