@@ -11,9 +11,11 @@ class <%= upperCamelCase %> extends Component {
     }
 
     render() {
-        return (
-            <p>{ text }</p>
-        );
+      let { text } = this.props;
+
+      return (
+          <p>{ text }</p>
+      );
     }
 
     componentDidMount() {
