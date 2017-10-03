@@ -1,11 +1,3 @@
-/**
- * Enxzyme docs:
- * http://airbnb.io/enzyme/docs/api/
- * 
- * Console log the rendered template:
- * console.log(wrapper.debug())
- */
-
 import React from 'react';
 import { shallow, mount} from 'enzyme';
 import { expect } from 'chai';
@@ -45,13 +37,13 @@ describe('Connected<%= upperCamelCase %>', () => {
     beforeEach(() => {
         store = mockStore({
             firstStoreAttribute: {
-                
+
             }
         });
     });
 
     it('should render connected <%= upperCamelCase %>', () => {
-        shallow(<Connected<%= upperCamelCase %> 
+        shallow(<Connected<%= upperCamelCase %>
             store={store}/>);
     });
 
