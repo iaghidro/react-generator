@@ -1,9 +1,13 @@
 import React from 'react';
+import { Provider } from 'react-redux';
 import { shallow, mount} from 'enzyme';
 import { expect } from 'chai';
 import sinon from 'sinon';
 
-import Connected<%= upperCamelCase %>, {<%= upperCamelCase %>} from './<%= upperCamelCase %>';
+import Connected
+import reducer from "../../../../../web-ui/source/react-app/components/tracking-items/components/trial-deposits/reducers/trial-deposits";
+
+<%= upperCamelCase %>, {<%= upperCamelCase %>} from './<%= upperCamelCase %>';
 
 describe('<%= upperCamelCase %>', () => {
 
@@ -26,25 +30,22 @@ describe('<%= upperCamelCase %>', () => {
 ////CONNECTED////
 /////////////////
 
-import thunk from 'redux-thunk';
-import configureMockStore from 'redux-mock-store';
-const middlewares = [thunk];
-const mockStore = configureMockStore(middlewares);
+import setupIntegrationTest from 'redux-integration-store';
 
 describe('Connected<%= upperCamelCase %>', () => {
     let store;
+    let dispatchSpy;
 
-    beforeEach(() => {
-        store = mockStore({
-            firstStoreAttribute: {
-
-            }
-        });
+  beforeEach(() => {
+      ({ store, dispatchSpy } = setupIntegrationTest(reducer, 'trialDeposits'));
     });
 
     it('should render connected <%= upperCamelCase %>', () => {
-        shallow(<Connected<%= upperCamelCase %>
-            store={store}/>);
+        shallow(
+            <Provider store={store}>
+              <Connected<%= upperCamelCase %>
+            </Provider>
+        );
     });
 
 });
