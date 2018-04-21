@@ -1,4 +1,4 @@
-Scaffolding tools for RocketLoans React projects
+Scaffolding tools for React projects
 
 ## Installation
 
